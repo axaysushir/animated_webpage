@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sass</title>
+    <link rel="stylesheet" href="obs.css">
+</head>
+<body>
+        
+    <section>
+        <section>
+                <h1>Scroll Down!</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Pariatur, eos eligendi asperiores, ratione nesciunt voluptatem 
+                    atque molestias odit dolorem consequatur ut ea molestiae nemo veniam
+                     suscipit animi at vero temporibus?</p>
+
+                
+        </section>
+    </section>
+    <section class="content">
+        <div class="left">
+            <img src="yellow.jpg" alt="yellow" class="yellow anim" data-delay="0s">
+            <p class="anim" data-delay=".5s">Want some solution for web??</p>
+                <img src="squiggly.svg" 
+                alt="" class="squig anim" data-delay="0.7s">
+        </div>
+        <div class="right">
+            <div class="anim" data-delay="1s">
+                <h2>Get Yellow</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                   Exercitationem natus nam ipsam inventore culpa repellendus 
+                   quas corrupti. Quo, praesentium unde.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+           
+    const images = document.querySelectorAll('.anim');
+
+    observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+        if(entry.intersectionRatio > 0) {
+            entry.target.style.animation = `anim1 2s ${entry.target.dataset.delay} forwards ease-out`;
+        }
+        else {
+            entry.target.style.animation = 'none';
+        }
+    })
+
+})
+
+images.forEach(image => {
+    observer.observe(image)
+})
+
+    </script>
+</body>
+</html>
